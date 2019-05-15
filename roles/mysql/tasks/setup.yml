@@ -1,0 +1,10 @@
+---
+
+- name: Install MySQL server
+  apt: name=mysql-server state=latest
+
+- name: Mysql | Set root password
+  shell: debconf-set-selections <<< 'mysql-server mysql-server/root_password password root_2019'
+
+- name: Mysql | Set root repassword
+  shell: debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root_2019'
